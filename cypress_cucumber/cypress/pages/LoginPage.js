@@ -3,7 +3,8 @@ export class LoginPage {
         pageTitle: () => cy.title(),
         userNameInput: () => cy.get('[data-test="username"]'),
         passwordInput: () => cy.get('[data-test="password"]'),
-        loginBtn: () => cy.get('[data-test="login-button"]')
+        loginBtn: () => cy.get('[data-test="login-button"]'),
+        errorMsg: () => cy.get('[data-test="error]')
     };
 
     navigate(){
