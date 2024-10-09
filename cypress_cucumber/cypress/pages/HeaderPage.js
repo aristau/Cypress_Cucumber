@@ -1,21 +1,21 @@
 export class HeaderPage {
     elements = {
         pageTitle: () => cy.title(),
-        hamburgerMenu: () => cy.get('#react-burger-menu-btn'),
-        cartLink: () => cy.get('[data-test="shopping-cart-link"]'),
-        productsPageLink: () => cy.get('[data-test="inventory-sidebar-link"]'),
+        accountDropDown: () => cy.get('[data-bs-toggle="dropdown"').eq(2),
+        loginLink: () => cy.contains('a', 'Login')
     };
 
-    clickCartLink(){
-        this.elements.cartLink().click();
+    clickAccountDropDown(){
+        this.elements.accountDropDown().click();
     }
 
-    clickHamburgerMenu(){
-        this.elements.hamburgerMenu().click();
+    clickLoginLink(){
+        this.elements.loginLink().click();
     }
 
-    clickProductsPageLink(){
-        this.elements.productsPageLink().click();
+    navigateToLoginPage(){
+        this.clickAccountDropDown();
+        this.clickLoginLink();
     }
 
 }
