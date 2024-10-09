@@ -6,7 +6,7 @@ export class LoginPage {
         resetPasswordLnk: () => this.cy.get('[data-bs-target="#reset"]'),
         loginBtn: () => cy.get('#submitBTN'),
         singUpBtn: () => cy.contains('a', 'Signup'),
-        errorMsg: () => cy.get('[data-test="error]')
+        //errorMsg: () => cy.get('[data-test="error]')
     };
 
     navigate(){
