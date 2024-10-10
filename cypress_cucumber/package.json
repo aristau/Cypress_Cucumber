@@ -14,9 +14,10 @@
     "esbuild": "^0.23.1"
   },
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^20.1.2"
+    "@badeball/cypress-cucumber-preprocessor": "^20.1.2",
+    "nodemailer": "^6.9.15"
   },
- "cypress-cucumber-preprocessor": {
+  "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
     "stepDefinitions": [
       "cypress/e2e/step_definitions/**"
