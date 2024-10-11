@@ -23,6 +23,9 @@ Scenario: A user logs into the website
     When a standard user logs onto the website
 
 @skip
+Scenario: A user resets their password
+
+@skip
 Scenario: A user signs up for the newsletter
 
 @skip

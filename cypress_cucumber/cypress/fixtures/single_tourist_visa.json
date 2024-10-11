@@ -1,0 +1,12 @@
+{
+    "first_name" : "Cypress",
+    "last_name" : "Test",
+    "email": "",
+    "phone" : "5555555555",
+    "number_of_days": 30,
+    "date": "",
+    "entry_type": "single",
+    "visa_type": "tourist",
+    "notes": "single tourist visa type"
+  }
+  

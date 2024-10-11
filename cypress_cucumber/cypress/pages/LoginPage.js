@@ -5,8 +5,7 @@ export class LoginPage {
         rememberMeChbx: () => cy.get('#rememberchb'),
         resetPasswordLnk: () => this.cy.get('[data-bs-target="#reset"]'),
         loginBtn: () => cy.get('#submitBTN'),
-        singUpBtn: () => cy.contains('a', 'Signup'),
-        //errorMsg: () => cy.get('[data-test="error]')
+        signUpBtn: () => cy.contains('a', 'Signup')
     };
 
     navigate(){
@@ -22,7 +21,7 @@ export class LoginPage {
     }
 
     toggleRememberMeCheckbox(){
-
+        this.elements.rememberMeChbx().check();
     }
 
     clickResetPasswordLink() {
@@ -34,7 +33,7 @@ export class LoginPage {
     }
 
     clickSignUpButton(){
-        this.elements.singUpBtn.click();
+        this.elements.signUpBtn.click();
     }
 
     login(userName, password){
