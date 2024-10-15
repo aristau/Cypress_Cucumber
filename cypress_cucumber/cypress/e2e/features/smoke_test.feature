@@ -12,15 +12,13 @@ Scenario: A new user signs up on the website
 @skip
 Scenario Outline: A "<userType>" user logs into the website
     When a "<userType>" user logs into the website
+    Then user info shows on dashboard page
 
 Examples:
     | userType  | 
     | Customer  |
     | Agent     |
 
-@skip
-Scenario: A user logs into the website
-    When a standard user logs onto the website
 
 @skip
 Scenario: A user resets their password

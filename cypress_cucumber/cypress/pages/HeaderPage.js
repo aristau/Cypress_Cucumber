@@ -11,7 +11,12 @@ export class HeaderPage {
         currencyDropDown: () => cy.get('[data-bs-toggle="dropdown"').eq(1),
         accountDropDown: () => cy.get('[data-bs-toggle="dropdown"').eq(2),
         loginLink: () => cy.contains('a', 'Login'),
-        signupLink: () => cy.contains('a', 'Signup')
+        signupLink: () => cy.contains('a', 'Signup'),
+        dashboardLink: () => cy.contains('a', 'Dashboard'),
+        bookingsLink: () => cy.contains('a', 'Bookings'),
+        reportsLink: () => cy.contains('a', 'Reports'),
+        profileLink: () => cy.contains('a', 'Profile'),
+        logoutLink: () => cy.contains('a', 'Logout')
     };
 
     clickHomeLink(){
@@ -74,6 +79,26 @@ export class HeaderPage {
         this.elements.signupLink().click();
     }
 
+    clickDashboardLink(){
+        this.elements.dashboardLink().click();
+    }
+
+    clickBookingsLink(){
+        this.elements.bookingsLink().click();
+    }
+
+    clickReportsLink(){
+        this.elements.reportsLink().click();
+    }
+
+    clickProfileLink(){
+        this.elements.profileLink().click();
+    }
+
+    clickLogoutLink(){
+        this.elements.logoutLink().click();
+    }
+
     navigateToLoginPage(){
         this.clickAccountDropDown();
         this.clickLoginLink();
@@ -82,6 +107,11 @@ export class HeaderPage {
     navigateToSignupPage(){
         this.clickAccountDropDown();
         this.clickSignupLink();
+    }
+
+    navigateToUserDasbhoardPage(){
+        this.clickAccountDropDown();
+        this.clickDashboardLink();
     }
 
 }
