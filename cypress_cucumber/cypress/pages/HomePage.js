@@ -1,6 +1,7 @@
 export class HomePage {
     elements = {
-        pageTitle: () => cy.title()
+        pageTitle: () => cy.title(),
+        yourTripStartsHereDiv: () => cy.get('.homepage')
     };
 
     navigate(){

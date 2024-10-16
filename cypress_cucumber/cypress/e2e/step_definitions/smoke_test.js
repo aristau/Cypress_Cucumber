@@ -25,6 +25,11 @@ When ("a {string} user logs into the website", function(userType) {
     }
 });
 
+When ("a user selects to view the website in the {string} language", function(language){
+    headerPage.clickLanguageDropDown();
+    headerPage.chooseLanguageOption(language);
+});
+
 Then ("user info shows on dashboard page", function(){
     cy.url().should('include', '/dashboard');
     userDashboardPage.elements.profileIcon().should('be.visible');
@@ -32,4 +37,17 @@ Then ("user info shows on dashboard page", function(){
 
 Then("home page shows the correct title", function (){
     homePage.elements.pageTitle().should("eq", "PHPTRAVELS");
+});
+
+Then ("the website text is displayed in the {string} language", function(language){
+    const languageMap = new Map([
+        ["English", "Your Trip Starts Here!"],
+        ["Arabic", "رحلتك تبدأ هنا!"],
+        ["Turkish", "Seyahatiniz Burada Başlıyor!"],
+        ["Russian", "Ваше путешествие начинается здесь!"],
+        ["French", "Votre voyage commence ici !"],
+        ["Chinese", "主标题1"],
+        ["Germany", "Ihre Reise beginnt hier!"],
+      ]);
+    homePage.elements.yourTripStartsHereDiv().should('contain', languageMap.get(language));
 });

@@ -55,8 +55,9 @@ export class HeaderPage {
         this.elements.currencyDropDown().click();
     }
 
-    chooseLanguageOption(){
-
+    chooseLanguageOption(language){
+        cy.contains('a', language, {timeout: 30000}).click();
+        //cy.get('.rbc-event', {timeout: 30000})
     }
 
     chooseCurrencyOption(){

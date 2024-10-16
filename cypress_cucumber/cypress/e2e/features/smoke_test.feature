@@ -9,7 +9,7 @@ Scenario: Home page Shows Correct Title
 @skip
 Scenario: A new user signs up on the website
 
-@skip
+
 Scenario Outline: A "<userType>" user logs into the website
     When a "<userType>" user logs into the website
     Then user info shows on dashboard page
@@ -41,6 +41,8 @@ Scenario: A user submits a visa
 
 @skip
 Scenario Outline: A user views the website in the "<language>" language
+    When a user selects to view the website in the "<language>" language
+    Then the website text is displayed in the "<language>" language
 
 Examples:
     | language |
