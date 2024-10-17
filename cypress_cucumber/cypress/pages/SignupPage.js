@@ -1,12 +1,12 @@
 export class SignupPage {
     elements = {
-        firstNameInput: () => cy.get('#first_name'),
+        firstNameInput: () => cy.get('#firstname'),
         lastNameInput: () => cy.get('#last_name'),
         countrySelect: () => cy.get('[title="Select Country"]'),
         phoneInput: () => cy.get('#phone'),
         emailInput: () => cy.get('#user_email'),
-        passwordInput: () => this.cy.get('#password'),
-        captchaChbx: () => this.cy.get('#recaptcha-anchor'),
+        passwordInput: () => cy.get('#password'),
+        captchaChbx: () => cy.get('.recaptcha-checkbox-checkmark'),
         signUpBtn: () => cy.get('#submitBTN')
     };
 
@@ -22,8 +22,9 @@ export class SignupPage {
         this.elements.lastNameInput().type(lastName);
     }
 
-    selectCountry(){
-       //TODO
+    selectCountry(country){
+       this.elements.countrySelect().click();
+       cy.contains('a', country, {timeout: 30000}).click({ force: true});
     }
 
     typePhoneNumber(phoneNumber) {
@@ -53,7 +54,7 @@ export class SignupPage {
         this.typePhoneNumber(userDetails.phone);
         this.typeEmail(userDetails.email);
         this.typePassword(userDetails.password);
-        this.toggleCaptchaCheckbox();
-        this.clickSignUpButton();
+        //this.toggleCaptchaCheckbox();
+        //this.clickSignUpButton();
     }
 }

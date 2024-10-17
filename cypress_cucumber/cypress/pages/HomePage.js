@@ -1,7 +1,8 @@
 export class HomePage {
     elements = {
         pageTitle: () => cy.title(),
-        yourTripStartsHereDiv: () => cy.get('.homepage')
+        yourTripStartsHereDiv: () => cy.get('.homepage'),
+        featuredHotesDiv: () => cy.get('.hotel-card-wrap')
     };
 
     navigate(){

@@ -52,16 +52,19 @@ export class HeaderPage {
     }
 
     clickCurrencyDropDown(){
+        this.elements.currencyDropDown().should('be.visible');
         this.elements.currencyDropDown().click();
     }
 
     chooseLanguageOption(language){
         cy.contains('a', language, {timeout: 30000}).click();
-        //cy.get('.rbc-event', {timeout: 30000})
     }
 
-    chooseCurrencyOption(){
-        
+    chooseCurrencyOption(currency){
+        //cy.get(data-bs-popper
+       // cy.contains('a', currency).should('be.visible');
+        cy.get('[data-bs-popper="static"]', {timeout: 30000}).should('be.visible');
+        cy.contains('a', currency, {timeout: 30000}).click({ force: true});
     }
 
     chooseAccountOption(){
@@ -102,11 +105,13 @@ export class HeaderPage {
 
     navigateToLoginPage(){
         this.clickAccountDropDown();
+        cy.get('[data-bs-popper="static"]', {timeout: 30000}).should('be.visible');
         this.clickLoginLink();
     }
 
     navigateToSignupPage(){
         this.clickAccountDropDown();
+        cy.get('[data-bs-popper="static"]', {timeout: 30000}).should('be.visible');
         this.clickSignupLink();
     }
 

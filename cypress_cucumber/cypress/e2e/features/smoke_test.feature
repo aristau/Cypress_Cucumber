@@ -8,8 +8,10 @@ Scenario: Home page Shows Correct Title
 
 @skip
 Scenario: A new user signs up on the website
+    When a user navigates to the "Signup" page
+    And user enters valid fields to create a new account
 
-
+@skip
 Scenario Outline: A "<userType>" user logs into the website
     When a "<userType>" user logs into the website
     Then user info shows on dashboard page
@@ -56,11 +58,13 @@ Examples:
 
 @skip
 Scenario Outline: A user views the website with the "<currency>" currency
+    When a user selects to view the website with the "<currency>" currency
+    Then the website is displayed with the "<currency>" currency
 
 Examples:
     | currency |
     | USD |
-    | GPB |
+    | GBP |
     | SAR |
     | EUR |
 

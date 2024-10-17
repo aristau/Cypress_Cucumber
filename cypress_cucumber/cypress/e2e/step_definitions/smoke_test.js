@@ -9,6 +9,9 @@ const headerPage = new HeaderPage();
 const { UserDashboardPage } = require("../../pages/UserDashboardPage")
 const userDashboardPage = new UserDashboardPage();
 
+const { SignupPage } = require("../../pages/SignupPage")
+const signupPage = new SignupPage();
+
 Given("a user lands on the website", function() {
     homePage.navigate();
 });
@@ -28,6 +31,23 @@ When ("a {string} user logs into the website", function(userType) {
 When ("a user selects to view the website in the {string} language", function(language){
     headerPage.clickLanguageDropDown();
     headerPage.chooseLanguageOption(language);
+});
+
+When ("a user selects to view the website with the {string} currency", function(currency){
+    headerPage.clickCurrencyDropDown();
+    headerPage.chooseCurrencyOption(currency);
+});
+
+When ("a user navigates to the \"Signup\" page", function(){
+    //headerPage.navigateToSignupPage();
+    cy.visit("https://phptravels.net/signup");
+});
+
+When ("user enters valid fields to create a new account", function(){
+    console.log("inside function");
+    this.user.email = "test@domain.com";
+    this.user.password = "testpassword123";
+    signupPage.signUp(this.user);
 });
 
 Then ("user info shows on dashboard page", function(){
@@ -50,4 +70,8 @@ Then ("the website text is displayed in the {string} language", function(languag
         ["Germany", "Ihre Reise beginnt hier!"],
       ]);
     homePage.elements.yourTripStartsHereDiv().should('contain', languageMap.get(language));
+});
+
+Then("the website is displayed with the {string} currency", function(currency){
+    homePage.elements.featuredHotesDiv().should('contain', currency);
 });
