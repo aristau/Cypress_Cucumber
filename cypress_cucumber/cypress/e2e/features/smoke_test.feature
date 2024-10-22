@@ -6,7 +6,7 @@ Background:
 Scenario: Home page Shows Correct Title
     Then home page shows the correct title
 
-@skip
+
 Scenario: A new user signs up on the website
     When a user navigates to the "Signup" page
     And user enters valid fields to create a new account

@@ -47,6 +47,10 @@ When ("user enters valid fields to create a new account", function(){
     console.log("inside function");
     this.user.email = "test@domain.com";
     this.user.password = "testpassword123";
+
+//     cy.intercept('POST', '/users', { fixture: 'user' }).as('userSuccess')
+// cy.get('form').submit()
+
     signupPage.signUp(this.user);
 });
 
