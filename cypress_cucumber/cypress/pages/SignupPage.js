@@ -52,13 +52,14 @@ export class SignupPage {
     }
 
     toggleCaptchaCheckbox(){
-        cy.get('[title="reCAPTCHA"]');
-        //cy.get('iframe');
-       // this.elements.captchaChbx().check();
+        //Click the captcha checkbox in the iframe. Checkbox is in  the document > body element of the iframe.
+
+        this.elements.captchaiFrame().its('0.contentDocument').should('exist').its('body').should('not.be.undefined')
+        .find('#recaptcha-anchor').click();
     }
-   
+ 
     clickSignUpButton(){
-        this.elements.signUpBtn.click();
+        this.elements.signUpBtn().click();
     }
 
    signUp(userDetails){

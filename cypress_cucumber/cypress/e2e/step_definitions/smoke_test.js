@@ -39,7 +39,6 @@ When ("a user selects to view the website with the {string} currency", function(
 });
 
 When ("a user navigates to the \"Signup\" page", function(){
-    //headerPage.navigateToSignupPage();
     cy.visit("https://phptravels.net/signup");
 });
 
