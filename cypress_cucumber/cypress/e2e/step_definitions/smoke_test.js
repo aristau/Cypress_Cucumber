@@ -6,11 +6,17 @@ const homePage = new HomePage();
 const { HeaderPage } = require("../../pages/HeaderPage")
 const headerPage = new HeaderPage();
 
+const { FooterPage } = require("../../pages/FooterPage")
+const footerPage = new FooterPage();
+
 const { UserDashboardPage } = require("../../pages/UserDashboardPage")
 const userDashboardPage = new UserDashboardPage();
 
 const { SignupPage } = require("../../pages/SignupPage")
 const signupPage = new SignupPage();
+
+const { recurse } = require('cypress-recurse')
+
 
 Given("a user lands on the website", function() {
     homePage.navigate();
@@ -43,14 +49,19 @@ When ("a user navigates to the \"Signup\" page", function(){
 });
 
 When ("user enters valid fields to create a new account", function(){
-    console.log("inside function");
-    this.user.email = "test@domain.com";
-    this.user.password = "testpassword123";
-
-//     cy.intercept('POST', '/users', { fixture: 'user' }).as('userSuccess')
-// cy.get('form').submit()
-
     signupPage.signUp(this.user);
+});
+
+When ("the user signs up for the newsletter", function() {
+    let name = this.user.first_name + " " + this.user.last_name;
+    let email = this.user.email;
+    const apiUrl = "https://phptravels.net/api/newsletter-subscribe";
+    cy.intercept(apiUrl).as("newsletterSubscribeRequest");
+    footerPage.signUpForNewsletter(name, email);
+});
+
+Then ("the user is subscribed to the newsletter successfully", function(apiResponse) {
+    cy.wait("@newsletterSubscribeRequest").its('response.statusCode').should('equal', 200);
 });
 
 Then ("user info shows on dashboard page", function(){

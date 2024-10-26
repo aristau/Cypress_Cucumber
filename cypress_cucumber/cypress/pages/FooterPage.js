@@ -13,19 +13,18 @@ export class FooterPage {
         fileAClaimLink: () => cy.contains('a', 'File A Claim'),
         careersAndJobsLink: () => cy.contains('a', 'Careers and Jobs'),
         howToBookLink: () => cy.contains('a', 'How To Book'),
-        //homeLink: () 
-        //emailUsLink: (),
-        contactUsLink: () => cy.contains('a', 'Contact Us'),
-        //newsletterNameInput: ()
-        //newsletterEmailInput: (),
-        //mewsletterSignUpBtn: ()
-        // facebookLink,
-        // twitterLink,
-        // linkedInLink,
-        // googleLink,
-        // youtubeLink,
-        // whatsappLink,
-        // instagramLink
+        homeLink: () => cy.get('.foot__logo waves-effect').eq(0),
+        emailUsLink: () => cy.contains('a', 'email@agency.com'),
+        newsletterNameInput: () => cy.get('.newsletter_name'),
+        newsletterEmailInput: () => cy.get('.newsletter_email'),
+        newsletterSignUpBtn: () => cy.get('.subscribe'),
+        facebookLink: () => cy.get('.rounded-5 waves-effect').eq(0),
+        twitterLink: () => cy.get('.rounded-5 waves-effect').eq(1),
+        linkedInLink: () => cy.get('.rounded-5 waves-effect').eq(2),
+        googleLink: () => cy.get('.rounded-5 waves-effect').eq(3),
+        youtubeLink: () => cy.get('.rounded-5 waves-effect').eq(4),
+        whatsappLink: () => cy.get('.rounded-5 waves-effect').eq(5),
+        instagramLink: () => cy.get('.rounded-5 waves-effect').eq(6)
     };
 
     clickAndroidAppBtn(){
@@ -81,61 +80,57 @@ export class FooterPage {
     }
 
     clickHomeLink(){
-
+        this.elements.homeLink().click();
     }
 
     clickEmaillUsLink(){
-
+        this.elements.emailUsLink().click();
     }
 
-    clickContactUsLink(){
-        this.elements.contactUsLink().click();
+    typeNewsletterSignUpName(name){
+        this.elements.newsletterNameInput().type(name);
     }
 
-    typeNewsletteSignUpName(name){
-        
-    }
-
-    typeNewsletteSignUpEmail(email){
-        
+    typeNewsletterSignUpEmail(email){
+        this.elements.newsletterEmailInput().type(email);
     }
 
     clickNewsletterSignupBtn(){
-        
+        this.elements.newsletterSignUpBtn().click();
     }
 
     signUpForNewsletter(name, email){
-        this.typeNewsletteSignUpName(name);
-        this.typeNewsletteSignUpEmail(email);
+        this.typeNewsletterSignUpName(name);
+        this.typeNewsletterSignUpEmail(email);
         this.clickNewsletterSignupBtn();
     }
 
     clickFacebookLink(){
-
+        this.elements.facebookLink().click();
     }
 
     clickTwitterLink(){
-
+        this.elements.twitterLink().click();
     }
 
     clickLinkedInLink(){
-
+        this.elements.linkedInLink().click();
     }
 
     clickGoogleLink(){
-
+        this.elements.googleLink().click();
     }
 
     clickYoutubeLink(){
-
+        this.elements.youtubeLink().click();
     }
 
     clickWhatsAppLink(){
-
+        this.elements.whatsappLink().click();
     }
 
     clickInstagramLink(){
-
+        this.elements.instagramLink().click();
     }
 
 }

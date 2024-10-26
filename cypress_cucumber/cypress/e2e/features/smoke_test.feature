@@ -6,7 +6,6 @@ Background:
 Scenario: Home page Shows Correct Title
     Then home page shows the correct title
 
-
 Scenario: A new user signs up on the website
     When a user navigates to the "Signup" page
     And user enters valid fields to create a new account
@@ -25,8 +24,9 @@ Examples:
 @skip
 Scenario: A user resets their password
 
-@skip
 Scenario: A user signs up for the newsletter
+    When the user signs up for the newsletter
+    Then the user is subscribed to the newsletter successfully
 
 @skip
 Scenario Outline: A user books a "<bookingType>" item
