@@ -1,11 +1,22 @@
-# Cypress_Cucumber
-Repository to showcase a test automation framework that uses Cypress and Cucumber. 
+# Cypress_Cucumber (WIP)
+This is a project to showcase a test automation framework that I built using Cypress and Cucumber. 
 
-I used these tools and principles when I was building the repository:
-Cypress
-Cucumber
-JavaScript
-BDD
-POM
+Site Under Test:
+- https://phptravels.net
 
-Instructions on how to run the tests:
+To Run the Tests:
+- npm run smoke-test
+
+Tools / Concepts:
+- Cypress
+- Cucumber (BDD, Scenarios, & Scenario Outlines)
+- Page Object Model (POM)
+- esbuild
+- JavaScript
+- Ethereal Email Accounts
+- Fixtures
+- iframes
+
+
+
+
