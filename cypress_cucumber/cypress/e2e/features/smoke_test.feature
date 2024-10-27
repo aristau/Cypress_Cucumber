@@ -10,7 +10,6 @@ Scenario: A new user signs up on the website
     When a user navigates to the "Signup" page
     And user enters valid fields to create a new account
 
-@skip
 Scenario Outline: A "<userType>" user logs into the website
     When a "<userType>" user logs into the website
     Then user info shows on dashboard page
@@ -20,9 +19,6 @@ Examples:
     | Customer  |
     | Agent     |
 
-
-@skip
-Scenario: A user resets their password
 
 Scenario: A user signs up for the newsletter
     When the user signs up for the newsletter

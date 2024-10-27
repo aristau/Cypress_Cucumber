@@ -1,4 +1,5 @@
 import { Given, Then, When, Before} from "@badeball/cypress-cucumber-preprocessor";
+//import { LoginPage } from "../../pages/LoginPage";
 
 const { HomePage } = require("../../pages/HomePage")
 const homePage = new HomePage();
@@ -8,6 +9,9 @@ const headerPage = new HeaderPage();
 
 const { FooterPage } = require("../../pages/FooterPage")
 const footerPage = new FooterPage();
+
+const { LoginPage } = require("../../pages/LoginPage")
+const loginPage = new LoginPage();
 
 const { UserDashboardPage } = require("../../pages/UserDashboardPage")
 const userDashboardPage = new UserDashboardPage();
@@ -23,14 +27,14 @@ Given("a user lands on the website", function() {
 });
 
 When ("a {string} user logs into the website", function(userType) {
-    headerPage.navigateToLoginPage();
+    loginPage.navigate();
 
     if(userType == "Customer"){
         cy.login("user@phptravels.com", "demouser");
     }
     else if(userType == "Agent"){
         cy.login("agent@phptravels.com", "demoagent");
-        headerPage.navigateToUserDasbhoardPage();
+        userDashboardPage.navigate();
     }
 });
 
@@ -45,7 +49,7 @@ When ("a user selects to view the website with the {string} currency", function(
 });
 
 When ("a user navigates to the \"Signup\" page", function(){
-    cy.visit("https://phptravels.net/signup");
+    signupPage.navigate();
 });
 
 When ("user enters valid fields to create a new account", function(){
