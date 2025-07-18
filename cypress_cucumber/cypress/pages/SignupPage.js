@@ -71,7 +71,7 @@ export class SignupPage {
         this.typePhoneNumber(userDetails.phone);
         this.typeEmail(userDetails.email);
         this.typePassword(userDetails.password);
-        this.toggleCaptchaCheckbox();
+        //this.toggleCaptchaCheckbox();
         //this.clickSignUpButton();
     }
 }
