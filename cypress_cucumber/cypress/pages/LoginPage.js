@@ -1,15 +1,13 @@
 export class LoginPage {
     elements = {
-        userNameInput: () => cy.get('#email'),
-        passwordInput: () => cy.get('#password'),
-        rememberMeChbx: () => cy.get('#rememberchb'),
-        resetPasswordLnk: () => this.cy.get('[data-bs-target="#reset"]'),
-        loginBtn: () => cy.get('#submitBTN'),
-        signUpBtn: () => cy.contains('a', 'Signup')
+        pageTitle: () => cy.title(),
+        userNameInput: () => cy.get('[data-test="username"]'),
+        passwordInput: () => cy.get('[data-test="password"]'),
+        loginBtn: () => cy.get('[data-test="login-button"]'),
     };
 
     navigate(){
-        cy.visit("https://phptravels.net/login");
+        cy.visit("https://www.saucedemo.com/");
     }
 
     typeUserName(userName){
@@ -20,20 +18,8 @@ export class LoginPage {
         this.elements.passwordInput().type(password);
     }
 
-    toggleRememberMeCheckbox(){
-        this.elements.rememberMeChbx().check();
-    }
-
-    clickResetPasswordLink() {
-        this.elements.resetPasswordLnk().click();
-    }
-
     clickLoginButton(){
         this.elements.loginBtn().click();
-    }
-
-    clickSignUpButton(){
-        this.elements.signUpBtn.click();
     }
 
     login(userName, password){
