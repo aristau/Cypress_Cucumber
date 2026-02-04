@@ -1,20 +1,20 @@
-Feature: Smoke Test
+Feature: Login
 
 Background:
     Given a user lands on the website
 
-# Scenario: Login page Shows Correct Title
-#     Then login page shows the correct title
+Scenario: Login page Shows Correct Title
+    Then login page shows the correct title
 
-# Scenario Outline: A "<userType>" user logs into the website
-#     When a "<userType>" user logs into the website with valid credentials
-#     Then user is redirected to the Products page
-    #And user should see the products list
+Scenario Outline: A "<userType>" user logs into the website
+    When a "<userType>" user logs into the website with valid credentials
+    Then user is redirected to the Products page
+    And user sees the products list
 
-# Examples:
-#     | userType  | 
-#     | Standard  |
-    #| Visual    | 
+Examples:
+    | userType  | 
+    | Standard  |
+    | Visual    | 
 
 # Scenario: A user logs in with Valid Credentials
 #   When a user logs in with valid credentials

@@ -4,7 +4,7 @@ import { Given, Then, When, Before} from "@badeball/cypress-cucumber-preprocesso
 const { LoginPage } = require("../../pages/LoginPage")
 const loginPage = new LoginPage();
 
-const { ProductsPage } = require("../../pages/ProductPage")
+const { ProductsPage } = require("../../pages/ProductsPage")
 const productsPage = new ProductsPage();
 
 
@@ -28,7 +28,11 @@ When ("a {string} user logs into the website with valid credentials", function(u
 });
 
 Then ("user is redirected to the Products page", function(){
-    productsPage.elements.pageTitle().should("eq", "Inventory");
+    cy.url().should('include', '/inventory.html');
+});
+
+Then ("user sees the products list", function(){
+    productsPage.elements.productList().should("be.visible");
 });
 
 // When ("a user selects to view the website in the {string} language", function(language){

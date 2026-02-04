@@ -14,7 +14,7 @@ async function setupNodeEvents(on, config){
   on(
     "file:preprocessor",
     createBundler({
-      plugins: [createEsbuildPlugin.default(config)],
+      plugins: [createEsbuildPlugin.default(config)]
     })
   );
 
@@ -99,7 +99,9 @@ async function parseEmail(message){
 
 module.exports = defineConfig({
   e2e: {
+    //specPattern: "cypress/e2e/features/*.feature",
     specPattern: "**/*.feature",
+    watchForFileChanges: true,
     chromeWebSecurity: false,
     setupNodeEvents
   },
