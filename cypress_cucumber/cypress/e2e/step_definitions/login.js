@@ -16,15 +16,34 @@ Then("login page shows the correct title", function (){
     loginPage.elements.pageTitle().should("eq", "Swag Labs");
 });
 
-When ("a {string} user logs into the website with valid credentials", function(userType) {
-    loginPage.navigate();
+When("user enters {string} into the username field", function(username){
+    //Simulating leaving the username field blank
+    if(username === 'EMPTY'){
+        return;
+    }
+    //Using an environment variable for the username
+    else{
+        const key = username.replace(/[${}"]/g, '');
+        username = Cypress.env(key);
+        loginPage.typeUserName(username);
+    }
+});
 
-    if(userType == "Standard"){
-        cy.login("standard_user", "secret_sauce");
+When("user enters {string} into the password field", function(password){
+    //Simulating leaving the password field blank
+    if(password === 'EMPTY'){
+        return;
     }
-    else if(userType == "Visual"){
-        cy.login("visual_user", "secret_sauce");
+    //Using an environment variable for the password
+    else{
+        const key = password.replace(/[${}"]/g, '');
+        password = Cypress.env(key);
+        loginPage.typePassword(password);
     }
+});
+
+When("user clicks the login button", function(){
+    loginPage.clickLoginButton();
 });
 
 Then ("user is redirected to the Products page", function(){
@@ -33,6 +52,10 @@ Then ("user is redirected to the Products page", function(){
 
 Then ("user sees the products list", function(){
     productsPage.elements.productList().should("be.visible");
+});
+
+Then ("an error message appears saying {string}", function(message){
+    loginPage.elements.errorMsg().should("be.visible").and('contain', message);
 });
 
 // When ("a user selects to view the website in the {string} language", function(language){

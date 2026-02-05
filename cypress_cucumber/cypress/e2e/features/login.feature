@@ -6,20 +6,26 @@ Background:
 Scenario: Login page Shows Correct Title
     Then login page shows the correct title
 
-Scenario Outline: A "<userType>" user logs into the website
-    When a "<userType>" user logs into the website with valid credentials
+Scenario: A standard user logs in with valid credentials
+    When user enters "${validUsername}" into the username field
+    And user enters "${validPassword}" into the password field
+    And user clicks the login button
     Then user is redirected to the Products page
     And user sees the products list
 
-Examples:
-    | userType  | 
-    | Standard  |
-    | Visual    | 
+Scenario Outline: A user attempts login with invalid credentials
+    When user enters "<username>" into the username field
+    And user enters "<password>" into the password field
+    And user clicks the login button
+    Then an error message appears saying "<error_message>"
 
-# Scenario: A user logs in with Valid Credentials
-#   When a user logs in with valid credentials
-#   Then user is navigated to the "Products" page
-#   And user should see the products list
+    Examples:
+    |username            | password           | error_message                                                               |
+    | ${invalidUsername} | ${validPassword}   | Epic sadface: Username and password do not match any user in this service   |
+    | ${validUsername}   | ${invalidPassword} | Epic sadface: Username and password do not match any user in this service   |
+    | EMPTY              | ${validPassword}   | Epic sadface: Username is required                                          |
+    | ${validUsername}   | EMPTY              | Epic sadface: Password is required                                          |
+    | EMPTY              | EMPTY              | Epic sadface: Username is required                                          |
 
 
 # Scenario: A new user signs up on the website
