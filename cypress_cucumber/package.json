@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open",
-    "smoke-test": "cypress run --spec cypress/e2e/features/smoke_test.feature"
+    "smoke-test": "cypress run"
   },
   "author": "",
   "license": "ISC",
