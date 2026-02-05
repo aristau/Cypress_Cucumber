@@ -2,7 +2,7 @@
 This is a project to showcase a test automation framework that I built using Cypress and Cucumber. 
 
 Site Under Test:
-- https://phptravels.net
+- https://www.saucedemo.com
 
 To Run the Tests:
 - npm run smoke-test
@@ -13,9 +13,7 @@ Tools / Concepts:
 - Page Object Model (POM)
 - esbuild
 - JavaScript
-- Ethereal Email Accounts
-- Fixtures
-- iframes
+
 
 
 
