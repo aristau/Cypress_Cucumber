@@ -13,6 +13,12 @@ Scenario: A standard user logs in with valid credentials
     Then user is redirected to the Products page
     And user sees the products list
 
+Scenario: A locked out user attempts login
+    When user enters "${lockedOutUsername}" into the username field
+    And user enters "${validPassword}" into the password field
+    And user clicks the login button
+    Then an error message appears saying "Epic sadface: Sorry, this user has been locked out."
+
 Scenario Outline: A user attempts login with invalid credentials
     When user enters "<username>" into the username field
     And user enters "<password>" into the password field
