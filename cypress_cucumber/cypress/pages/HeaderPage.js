@@ -6,7 +6,8 @@ export class HeaderPage {
         aboutLink: () => cy.get('[data-test="about-sidebar-link"]'),
         logoutLink: () => cy.get('[data-test="logout-sidebar-link"]'),
         resetAppLink: () => cy.get('[data-test="reset-sidebar-link"]'),
-        shoppingCartLink: () => cy.get('[data-test="shopping-cart-link"]')
+        shoppingCartLink: () => cy.get('[data-test="shopping-cart-link"]'),
+        shoppingCartBadge: () => cy.get('[data-test="shopping-cart-badge"]')
     };
 
     clickMenuButton(){
