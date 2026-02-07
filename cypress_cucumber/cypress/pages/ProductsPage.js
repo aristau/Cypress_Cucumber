@@ -69,7 +69,7 @@ export class ProductsPage {
         this.elements.sortDropDown().select(option);
    }
 
-   //Assert that prices are sorted in ascending order
+   //Assert that product prices are sorted in a specified order (ascending/descending)
    assertPricesSorted(order = "ascending") {
     const prices = [];
 
@@ -80,6 +80,22 @@ export class ProductsPage {
     }).then(() => {
       assertSorted(prices, order);
     });
-  }   
+  }
 
+  //Assert that product titles are sorted in a specified order (ascending / descending)
+  assertTitlesSorted(order = "ascending") {
+    const titles = [];
+
+    this.elements.products().each(($product) => {
+      this.getProductTitle($product)
+        .invoke("text")
+        .then((text) => titles.push(text));
+    }).then(() => {
+      assertSorted(titles, order);
+    });
+  }
 }
+
+
+
+

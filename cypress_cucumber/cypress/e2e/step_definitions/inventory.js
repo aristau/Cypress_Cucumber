@@ -6,6 +6,9 @@ const productsPage = new ProductsPage();
 const { HeaderPage } = require("../../pages/HeaderPage")
 const headerPage = new HeaderPage();
 
+const { ProductDetailPage } = require("../../pages/ProductDetailPage")
+const productDetailPage = new ProductDetailPage();
+
 
 Then("each product has a title, price, and image", function (){
     productsPage.elements.products().each(($product) => {
@@ -49,30 +52,47 @@ Then("products should be displayed in ascending price order", () => {
   productsPage.assertPricesSorted("ascending");
 });
 
-// Then("products should be displayed in descending price order", () => {
-//   productsPage.assertPricesSortedDescending();
-// });
+Then("products should be displayed in descending price order", () => {
+  productsPage.assertPricesSorted("descending");
+});
 
-// Then("products should be displayed in alphabetical order", () => {
-//   productsPage.assertNamesSortedAscending();
-// });
+Then("products should be displayed in alphabetical order", () => {
+  productsPage.assertTitlesSorted("ascending");
+});
 
-// Then("products should be displayed in reverse alphabetical order", () => {
-//   productsPage.assertNamesSortedDescending();
-// });
+Then("products should be displayed in reverse alphabetical order", () => {
+  productsPage.assertTitlesSorted("descending");
+});
 
-// /*HELPER FUNCTIONS*/
-// function addProductsToCart(count) {
-//   for (let i = 0; i < count; i++) {
-//     productsPage.addProductToCart(i);
-//   }
-// }
+When("user navigates through the inventory", () =>{
+   productsPage.elements.products().last().scrollIntoView({ duration: 500 });
+   productsPage.elements.products().first().scrollIntoView({ duration: 500 });
+});
 
-// function removeProductsFromCart(count) {
-//   for (let i = 0; i < count; i++) {
-//     productsPage.removeProductFromCart(i);
-//   }
-// }
+When("user clicks the {string} of a product", (element) => {
+  productsPage.elements.products().first().then(($product) => {
+    if (element === "title") {
+      productsPage.getProductTitle($product).click();
+    } else if (element === "image") {
+      productsPage.getProductImage($product).click();
+    } else {
+      throw new Error(`Unknown element type: ${element}`);
+    }
+  });
+});
+
+Then("the product detail page shows a title, description, price, and image", () => {
+  productDetailPage.assertProductDetail();
+});
+
+Then("user can navigate back to inventory", () => {
+  productDetailPage.goBackToInventory();
+  productsPage.elements.productList().should("be.visible");
+});
+
+
+
+
 
 
 
