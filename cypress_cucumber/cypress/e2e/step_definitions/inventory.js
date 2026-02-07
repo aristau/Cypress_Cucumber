@@ -19,7 +19,7 @@ Then("each product has a title, price, and image", function (){
 });
 
 When("user adds {int} product(s) to the cart", (count) => {
-  addProductsToCart(count);
+  productsPage.addProductsToCart(count);
 });
 
 Then("the cart should contain {int} product(s)", (count) => {
@@ -27,15 +27,54 @@ Then("the cart should contain {int} product(s)", (count) => {
 });
 
 Given("user has added {int} product(s) to the cart", (count) => {
-  addProductsToCart(count);
+  productsPage.addProductsToCart(count);
+  headerPage.elements.shoppingCartBadge().should("be.visible").and('contain', count);
+
 });
 
-//Helper function to add multiple products to the cart
-function addProductsToCart(count) {
-  for (let i = 0; i < count; i++) {
-    productsPage.addProductToCart(i);
-  }
-}
+When("user removes {int} product(s) from the cart", (count) => {
+  productsPage.removeProductsFromCart(count);
+});
+
+Then("the cart should be empty", () => {
+  headerPage.elements.shoppingCartBadge().should("not.exist");
+});
+
+When("user sorts products by {string}", (option) => {
+  console.log(option);
+  productsPage.selectSortOption(option);
+});
+
+Then("products should be displayed in ascending price order", () => {
+  productsPage.assertPricesSorted("ascending");
+});
+
+// Then("products should be displayed in descending price order", () => {
+//   productsPage.assertPricesSortedDescending();
+// });
+
+// Then("products should be displayed in alphabetical order", () => {
+//   productsPage.assertNamesSortedAscending();
+// });
+
+// Then("products should be displayed in reverse alphabetical order", () => {
+//   productsPage.assertNamesSortedDescending();
+// });
+
+// /*HELPER FUNCTIONS*/
+// function addProductsToCart(count) {
+//   for (let i = 0; i < count; i++) {
+//     productsPage.addProductToCart(i);
+//   }
+// }
+
+// function removeProductsFromCart(count) {
+//   for (let i = 0; i < count; i++) {
+//     productsPage.removeProductFromCart(i);
+//   }
+// }
+
+
 
 
 
