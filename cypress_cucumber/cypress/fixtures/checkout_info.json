@@ -1,0 +1,22 @@
+{
+  "validUser": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "postalCode": "12345"
+  },
+  "missingFirstName": {
+    "firstName": "",
+    "lastName": "Doe",
+    "postalCode": "12345"
+  },
+  "missingLastName": {
+    "firstName": "John",
+    "lastName": "",
+    "postalCode": "12345"
+  },
+  "missingPostalCode": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "postalCode": ""
+  }
+}

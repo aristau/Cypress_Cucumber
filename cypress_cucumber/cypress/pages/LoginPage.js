@@ -12,11 +12,11 @@ export class LoginPage {
     }
 
     typeUserName(userName){
-        this.elements.userNameInput().type(userName);
+        this.elements.userNameInput().clear().type(userName);
     }
 
     typePassword(password){
-        this.elements.passwordInput().type(password);
+        this.elements.passwordInput().clear().type(password);
     }
 
     clickLoginButton(){

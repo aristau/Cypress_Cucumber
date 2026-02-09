@@ -5,12 +5,31 @@ export class CheckoutInformationPage {
     postalCodeInput: () => cy.get("[data-test='postalCode']"),
     continueBtn: () => cy.get("[data-test='continue']"),
     cancelBtn: () => cy.get("[data-test='cancel']"),
+    errorMsg: () => cy.get("[data-test='error']"),
   };
 
-  fillCheckoutForm(first, last, zip) {
-    this.elements.firstNameInput().type(first);
-    this.elements.lastNameInput().type(last);
-    this.elements.postalCodeInput().type(zip);
+  typeFirstName(firstName){
+    if(firstName != ""){
+      this.elements.firstNameInput().clear().type(firstName);
+    }
+  }
+
+  typeLastName(lastName){
+    if(lastName != ""){
+      this.elements.lastNameInput().clear().type(lastName);
+    }
+  }
+
+  typePostalCode(postalCode){
+    if(postalCode != ""){
+      this.elements.postalCodeInput().clear().type(postalCode);
+    }
+  }
+
+  fillCheckoutForm(userData) {
+    this.typeFirstName(userData.firstName);
+    this.typeLastName(userData.lastName);
+    this.typePostalCode(userData.postalCode);
   }
 
   clickContinueBtn() {
