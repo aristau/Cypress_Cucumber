@@ -26,3 +26,15 @@ When("user clicks the continue shopping button", function (){
     cartPage.clickContinueShoppingBtn();
 });
 
+When("user returns to inventory and then back to cart", function(){
+    cartPage.clickContinueShoppingBtn();
+    headerPage.clickShoppingCartLink();
+});
+
+Then("each product shows a title, price, and quantity", function (){
+       cartPage.elements.products().each(($product) => {
+       cartPage.elements.productTitle($product).should('exist').and('not.be.empty');
+       cartPage.elements.productPrice($product).should('exist').and('not.be.empty');
+       cartPage.elements.productQty($product).should('exist').and('not.be.empty');
+  });
+});

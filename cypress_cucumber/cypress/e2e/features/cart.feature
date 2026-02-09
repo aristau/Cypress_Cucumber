@@ -7,7 +7,7 @@ Scenario: Cart page displays correct items
   Given user has added 2 products to the cart
   When user navigates to the cart
   Then the cart should contain 2 products
- #And each product shows a title, price, and quantity
+  And each product shows a title, price, and quantity
 
 Scenario: User can proceed to checkout
   Given user has added 2 products to the cart
@@ -26,17 +26,17 @@ Scenario: User can navigate back to product list
   Given user navigates to the cart
   Then the cart should be empty
 
-# Scenario: User can remove a product from the cart
-#   Given user has added 2 products to the cart
-#   And user navigates to the cart
-#   When user removes 1 product from the cart
-#   Then the cart should contain 1 product
+Scenario: User can remove a product from the cart
+  Given user has added 2 products to the cart
+  And user navigates to the cart
+  When user removes 1 product from the cart
+  Then the cart should contain 1 product
 
-# Scenario: Cart retains items when navigating away
-#   Given user has added 2 products to the cart
-#   And user navigates to the cart
-#   When user returns to inventory and then back to cart
-#   Then the cart should contain 2 products
+Scenario: Cart retains items when navigating away
+  Given user has added 2 products to the cart
+  And user navigates to the cart
+  When user returns to inventory and then back to cart
+  Then the cart should contain 2 products
 
 
 

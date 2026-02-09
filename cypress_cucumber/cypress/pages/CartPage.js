@@ -3,6 +3,7 @@ export class CartPage {
     products: () => cy.get("[data-test='inventory-item']"),
     productTitle: (product) => cy.wrap(product).find("[data-test='inventory-item-name']"),
     productPrice: (product) => cy.wrap(product).find("[data-test='inventory-item-price']"),
+    productQty: (product) => cy.wrap(product).find("[data-test='item-quantity']"),
     removeBtn: (product) => cy.wrap(product).find("button"),
     checkoutBtn: () => cy.get("[data-test='checkout']"),
     continueShoppingBtn: () => cy.get("[data-test='continue-shopping']"),
