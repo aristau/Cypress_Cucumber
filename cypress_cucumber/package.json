@@ -5,6 +5,10 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+    "cy:run:inventory": "cypress run --spec 'cypress/e2e/features/inventory.feature'",
+    "cy:run:login": "cypress run --spec 'cypress/e2e/features/authentication.feature'",
+    "cy:run:checkout": "cypress run --spec 'cypress/e2e/features/checkout.feature'",
+    "cy:run:cart": "cypress run --spec 'cypress/e2e/features/cart.feature'",
     "cy:chrome": "cypress run --browser chrome"
   },
   "author": "",
