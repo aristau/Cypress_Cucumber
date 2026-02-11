@@ -19,7 +19,7 @@ Scenario: User can navigate back to product list
   Given user has added 2 products to the cart
   When user navigates to the cart
   And user clicks the continue shopping button
-  Then user is redirected to the Products page 
+  Then user lands on the products page 
   And user sees the products list
 
   Scenario: Empty cart is displayed correctly

@@ -49,7 +49,7 @@ When("user clicks the login button", function(){
     loginPage.clickLoginButton();
 });
 
-Then ("user is redirected to the Products page", function(){
+Then ("user lands on the products page", function(){
     cy.url().should('include', '/inventory.html');
 });
 

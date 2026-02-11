@@ -1,6 +1,6 @@
 import { Given, Then, When, Before} from "@badeball/cypress-cucumber-preprocessor";
 import checkoutInfo from "../../fixtures/checkout_info.json"
-import { goToCheckoutInformationPage } from "../../support/helpers/checkoutHelpers";
+import { goToCheckoutInformationPage, goToCheckoutOverviewPage } from "../../support/helpers/checkoutHelpers";
 
 
 const { HeaderPage } = require("../../pages/HeaderPage")
@@ -18,17 +18,22 @@ const checkoutInfoPage = new CheckoutInformationPage();
 const { CheckoutOverviewPage } = require("../../pages/CheckoutOverviewPage")
 const checkoutOverviewPage = new CheckoutOverviewPage();
 
+const { CheckoutCompletePage } = require("../../pages/CheckoutCompletePage")
+const checkoutCompletePage = new CheckoutCompletePage();
+
 Given("user is on the checkout information page", function(){
     goToCheckoutInformationPage(productsPage, headerPage, cartPage);
 });
 
 Given("user is on the checkout overview page", function(){
     goToCheckoutInformationPage(productsPage, headerPage, cartPage);
+    goToCheckoutOverviewPage(checkoutInfoPage, checkoutInfo);
+});
 
-   checkoutInfoPage.fillCheckoutForm(checkoutInfo.validUser);
-   checkoutInfoPage.clickContinueBtn();
-
-   cy.url().should("include", "/checkout-step-two.html");
+Given("user has completed checkout", function(){
+      goToCheckoutInformationPage(productsPage, headerPage, cartPage);
+      goToCheckoutOverviewPage(checkoutInfoPage, checkoutInfo);
+      checkoutOverviewPage.clickFinishBtn();
 });
 
 Then("user sees first name, last name, and postal code fields", function(){
@@ -84,4 +89,19 @@ Then("the checkout totals should be correct", function(count){
   checkoutOverviewPage.assertCheckoutTotals();
 });
 
+When("user completes checkout", function(){
+    checkoutOverviewPage.clickFinishBtn();
+});
+
+Then("the checkout is successful", () => {
+  cy.url().should("include", "/checkout-complete.html");
+});
+
+Then("a confirmation message is displayed", () => {
+  cy.contains("Thank you for your order!").should("be.visible");
+});
+
+When("user navigates back to products", () => {
+    checkoutCompletePage.clickHomeBtn();
+});
 

@@ -8,4 +8,13 @@ function goToCheckoutInformationPage(productsPage, headerPage, cartPage) {
   cy.url().should("include", "/checkout-step-one.html");
 }
 
-module.exports = { goToCheckoutInformationPage };
+/**
+ * Sets up state needed to go to the checkout overview page
+ */
+function goToCheckoutOverviewPage(checkoutInfoPage, checkoutInfo) {
+    checkoutInfoPage.fillCheckoutForm(checkoutInfo.validUser);
+    checkoutInfoPage.clickContinueBtn();
+    cy.url().should("include", "/checkout-step-two.html");
+}
+
+module.exports = { goToCheckoutInformationPage, goToCheckoutOverviewPage };

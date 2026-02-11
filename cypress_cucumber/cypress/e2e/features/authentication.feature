@@ -10,7 +10,7 @@ Scenario: A standard user logs in with valid credentials
     When user enters "${validUsername}" into the username field
     And user enters "${validPassword}" into the password field
     And user clicks the login button
-    Then user is redirected to the Products page
+    Then user lands on the products page
     And user sees the products list
 
 Scenario: A locked out user attempts login
