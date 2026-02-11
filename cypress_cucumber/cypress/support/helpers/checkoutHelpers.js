@@ -1,7 +1,7 @@
 /**
  * Sets up state needed to go to the checkout info page
  */
-function goToCheckoutInformationPage(productsPage, headerPage, cartPage) {
+function goToCheckoutInformationPage(headerPage, cartPage) {
   headerPage.clickShoppingCartLink();
   cartPage.clickCheckoutBtn();
 

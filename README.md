@@ -1,11 +1,13 @@
-# Cypress_Cucumber (WIP)
+# Cypress_Cucumber
 This is a project to showcase a test automation framework that I built using Cypress and Cucumber. 
 
 Site Under Test:
 - https://www.saucedemo.com
 
 To Run the Tests:
-- npm run smoke-test
+- cd cypress_cucumber
+- npm run cy:run
+![Test Run Results](image.png)
 
 Tools / Concepts:
 - Cypress
@@ -13,6 +15,10 @@ Tools / Concepts:
 - Page Object Model (POM)
 - esbuild
 - JavaScript
+- Fixtures
+- Environment Variables
+- Helper Functions
+- Cypress Commands
 
 
 

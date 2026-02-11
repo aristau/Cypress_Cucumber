@@ -1,3 +1,4 @@
+// A list of products with title, price, and quantity
 export const productList = {
   products: () => cy.get("[data-test='inventory-item']"),
   title: (product) =>

@@ -1,4 +1,4 @@
-import { Given, Then, When, Before} from "@badeball/cypress-cucumber-preprocessor";
+import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import checkoutInfo from "../../fixtures/checkout_info.json"
 import { goToCheckoutInformationPage, goToCheckoutOverviewPage } from "../../support/helpers/checkoutHelpers";
 
@@ -22,16 +22,16 @@ const { CheckoutCompletePage } = require("../../pages/CheckoutCompletePage")
 const checkoutCompletePage = new CheckoutCompletePage();
 
 Given("user is on the checkout information page", function(){
-    goToCheckoutInformationPage(productsPage, headerPage, cartPage);
+    goToCheckoutInformationPage(headerPage, cartPage);
 });
 
 Given("user is on the checkout overview page", function(){
-    goToCheckoutInformationPage(productsPage, headerPage, cartPage);
+    goToCheckoutInformationPage(headerPage, cartPage);
     goToCheckoutOverviewPage(checkoutInfoPage, checkoutInfo);
 });
 
 Given("user has completed checkout", function(){
-      goToCheckoutInformationPage(productsPage, headerPage, cartPage);
+      goToCheckoutInformationPage(headerPage, cartPage);
       goToCheckoutOverviewPage(checkoutInfoPage, checkoutInfo);
       checkoutOverviewPage.clickFinishBtn();
 });

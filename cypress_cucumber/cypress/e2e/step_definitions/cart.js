@@ -1,4 +1,4 @@
-import { Given, Then, When, Before} from "@badeball/cypress-cucumber-preprocessor";
+import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import { productList } from "../../support/ui/productList";
 
 const { HeaderPage } = require("../../pages/HeaderPage")
