@@ -1,4 +1,5 @@
 import { Given, Then, When, Before} from "@badeball/cypress-cucumber-preprocessor";
+import { productList } from "../../support/ui/productList";
 
 const { HeaderPage } = require("../../pages/HeaderPage")
 const headerPage = new HeaderPage();
@@ -32,9 +33,9 @@ When("user returns to inventory and then back to cart", function(){
 });
 
 Then("each product shows a title, price, and quantity", function (){
-       cartPage.elements.products().each(($product) => {
-       cartPage.elements.productTitle($product).should('exist').and('not.be.empty');
-       cartPage.elements.productPrice($product).should('exist').and('not.be.empty');
-       cartPage.elements.productQty($product).should('exist').and('not.be.empty');
+    productList.products().each(($product) => {
+    productList.title($product).should("exist").and('not.be.empty');
+    productList.price($product).should('exist').and('not.be.empty');;
+    productList.quantity($product).should('exist').and('not.be.empty');
   });
 });

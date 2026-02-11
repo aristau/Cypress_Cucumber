@@ -4,18 +4,21 @@ Background:
   Given user is logged in with valid credentials
 
 Scenario: Checkout information page shows required fields
-  Given user is on the checkout information page
+  Given user has added 1 product to the cart
+  And user is on the checkout information page
   Then user sees first name, last name, and postal code fields
   And user sees a continue button
 
 Scenario: User can continue checkout with valid information
-  Given user is on the checkout information page
+  Given user has added 1 product to the cart
+  And user is on the checkout information page
   When user enters valid checkout information
   And user continues checkout
-  Then user is on the checkout overview page
+  Then user lands on the checkout overview page
 
 Scenario Outline: Checkout requires all required fields
-  Given user is on the checkout information page
+  Given user has added 1 product to the cart
+  And user is on the checkout information page
   When user enters checkout information "<fixtureKey>"
   And user continues checkout
   Then an error message "<errorMessage>" is displayed
@@ -26,11 +29,23 @@ Examples:
   | missingLastName     | Error: Last Name is required     |
   | missingPostalCode   | Error: Postal Code is required   |
 
-#   Scenario: Checkout overview displays selected products
-#   Given user has added 2 products to the cart
-#   And user is on the checkout overview page
-#   Then the checkout overview shows 2 products
-#   And each product shows a title, price, and quantity
+Scenario: User can cancel checkout
+  Given user has added 1 product to the cart
+  And user is on the checkout information page
+  When user cancels checkout
+  Then user is returned to the cart page
+
+  Scenario: User can navigate back from checkout overview
+  Given user has added 1 product to the cart
+  And user is on the checkout overview page
+  When user navigates back
+  Then user is redirected to the checkout information page
+
+  Scenario: Checkout overview displays selected products
+  Given user has added 2 products to the cart
+  And user is on the checkout overview page
+  Then the checkout overview shows 2 products
+  And each product shows a title, price, and quantity
 
 #   Scenario: Checkout overview shows correct totals
 #   Given user has added 2 products to the cart
@@ -51,12 +66,5 @@ Examples:
 #   Then user is on the inventory page
 #   And the cart should be empty
 
-#   Scenario: User can cancel checkout
-#   Given user is on the checkout information page
-#   When user cancels checkout
-#   Then user is returned to the cart page
 
-#   Scenario: User can navigate back from checkout overview
-#   Given user is on the checkout overview page
-#   When user navigates back
-#   Then user is on the checkout information page
+

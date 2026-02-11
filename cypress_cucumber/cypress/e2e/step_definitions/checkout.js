@@ -1,5 +1,7 @@
 import { Given, Then, When, Before} from "@badeball/cypress-cucumber-preprocessor";
 import checkoutInfo from "../../fixtures/checkout_info.json"
+import { goToCheckoutInformationPage } from "../../support/helpers/checkoutHelpers";
+
 
 const { HeaderPage } = require("../../pages/HeaderPage")
 const headerPage = new HeaderPage();
@@ -17,17 +19,16 @@ const { CheckoutOverviewPage } = require("../../pages/CheckoutOverviewPage")
 const checkoutOverviewPage = new CheckoutOverviewPage();
 
 Given("user is on the checkout information page", function(){
-  // Ensure cart has at least one product
-  productsPage.addProductToCart();
+    goToCheckoutInformationPage(productsPage, headerPage, cartPage);
+});
 
-  // Go to cart
-  headerPage.clickShoppingCartLink();
+Given("user is on the checkout overview page", function(){
+    goToCheckoutInformationPage(productsPage, headerPage, cartPage);
 
-  // Start checkout
-  cartPage.clickCheckoutBtn();
+   checkoutInfoPage.fillCheckoutForm(checkoutInfo.validUser);
+   checkoutInfoPage.clickContinueBtn();
 
-  // Assert navigation
-  cy.url().should("include", "/checkout-step-one.html");
+   cy.url().should("include", "/checkout-step-two.html");
 });
 
 Then("user sees first name, last name, and postal code fields", function(){
@@ -48,7 +49,11 @@ When("user continues checkout", function(){
     checkoutInfoPage.clickContinueBtn();
 });
 
-Then("user is on the checkout overview page", function(){
+When("user cancels checkout", function(){
+    checkoutInfoPage.clickCancelBtn();
+});
+
+Then("user lands on the checkout overview page", function(){
      cy.url().should("include", "/checkout-step-two.html");
      checkoutOverviewPage.elements.finishBtn().should("be.visible");
 });
@@ -60,3 +65,19 @@ When("user enters checkout information {string}", (fixtureKey) => {
 Then ("an error message {string} is displayed", function(message){
     checkoutInfoPage.elements.errorMsg().should("be.visible").and('contain', message);
 });
+
+Then("user is returned to the cart page", function(){
+     cy.url().should("include", "/cart.html");
+     cartPage.elements.checkoutBtn().should("be.visible");
+});
+
+When("user navigates back", function(){
+    cy.go('back');
+});
+
+Then("the checkout overview shows {int} products", function(count){
+    checkoutOverviewPage.elements.products()
+    .should("have.length", count);
+});
+
+
