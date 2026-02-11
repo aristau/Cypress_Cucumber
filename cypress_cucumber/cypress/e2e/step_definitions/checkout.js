@@ -80,4 +80,8 @@ Then("the checkout overview shows {int} products", function(count){
     .should("have.length", count);
 });
 
+Then("the checkout totals should be correct", function(count){
+  checkoutOverviewPage.assertCheckoutTotals();
+});
+
 
