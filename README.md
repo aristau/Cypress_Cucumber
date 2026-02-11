@@ -6,6 +6,7 @@ Site Under Test:
 
 To Run the Tests:
 - cd cypress_cucumber
+- npm install
 - npm run cy:run
 ![Test Run Results](image.png)
 
