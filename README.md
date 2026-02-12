@@ -1,46 +1,95 @@
 [![Cypress Tests](https://github.com/aristau/Cypress_Cucumber/actions/workflows/cypress.yml/badge.svg)](https://github.com/aristau/Cypress_Cucumber/actions)
 
 # Cypress_Cucumber
-This is a project to showcase a test automation framework that I built using Cypress and Cucumber. 
+> Professional Cypress + Cucumber automation framework demonstrating BDD, Page Object Model, CI/CD, and maintainable automation practices.
 
-![Test Run Results](image.png)
+---
 
-**Site Under Test:**
-- https://www.saucedemo.com
+## ⭐ Project Overview
 
-**Setup:**
--     cd cypress_cucumber
--     npm install
+This project automates the **SauceDemo e-commerce site** ([https://www.saucedemo.com](https://www.saucedemo.com)):
 
-**To Run the Tests:**
-- **Run All Tests in Electron:**
--     npm run cy:run
-- **Run All Tests in Chrome:**
--     npm run cy:chrome
-- **Run Tests in Headed Mode:**
--     npm run cy:open
-- **Run Specific Feature Files:**
-    - **Inventory:**
-    -     npm run cy:run:inventory
-    - **Cart:**
-    -     npm run cy:run:cart
-    - **Authentication:**
-    -     npm run cy:run:login
-    - **Checkout:**
-    -     npm run cy:run:checkout
+- Login workflows  
+- Product browsing and sorting  
+- Cart functionality  
+- Checkout process  
 
+---
 
-**Tools / Concepts:**
+## 🏗 Architecture & Design
+
+**Framework Highlights:**
+
 - Cypress
-- Cucumber (BDD, Scenarios, & Scenario Outlines)
-- Page Object Model (POM)
+- Page Object Model (POM)  
+- Behavior-Driven Development (BDD) with Cucumber
 - esbuild
 - JavaScript
-- Fixtures
-- Environment Variables
-- Helper Functions
-- Cypress Commands
-- GitHub Actions CI
+- Reusable helper functions  
+- Fixture-based test data
+- Cypress commands
+- Environment variables
+- CI/CD integration with GitHub Actions  
+
+---
+
+## ✅ Test Coverage
+
+**Authentication:** Valid/invalid login, locked out user, required field validation  
+**Inventory:** Products visibility, add/remove single & multiple products, sorting, cart persistence  
+**Cart:** Cart content, remove items, continue shopping, checkout navigation  
+**Checkout:** Required fields, overview validation, totals, taxes, checkout confirmation  
+
+---
+
+## 📈 Continuous Integration
+
+**Automated Test Runs:** GitHub Actions executes all tests on every push or pull request.
+
+**Failure Artifacts:** Screenshots & videos uploaded **only on failures.**
+
+**CI Badge:** Provides clear visibility into test results
+
+---
+
+## 🚀 Running Tests Locally
+**Setup:**
+```
+cd cypress_cucumber
+npm install
+```
+**Run All Tests in Electron:**
+```
+npm run cy:run
+```
+**Run All Tests in Chrome:**
+```
+npm run cy:chrome
+```
+**Run Tests in Headed (GUI) mode:**
+```
+npm run cy:open
+```
+**Run Specific Feature Files:**
+
+**- Inventory:**
+```
+npm run cy:run:inventory
+```
+**- Cart:**
+```
+npm run cy:run:cart
+```
+**- Authentication:**
+```
+npm run cy:run:login
+```
+**- Checkout:**
+```
+npm run cy:run:checkout
+```
+
+
 
 
 
