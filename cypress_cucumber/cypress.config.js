@@ -22,6 +22,8 @@ module.exports = defineConfig({
     watchForFileChanges: true,
     baseUrl: "https://www.saucedemo.com",
     chromeWebSecurity: false,
+    video: true,
+    screenshotOnRunFailure: true,
     setupNodeEvents
   },
   env: {
