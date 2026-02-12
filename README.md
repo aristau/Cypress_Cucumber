@@ -1,3 +1,5 @@
+[![Cypress Tests](https://github.com/aristau/Cypress_Cucumber/actions/workflows/cypress.yml/badge.svg)](https://github.com/aristau/Cypress_Cucumber/actions)
+
 # Cypress_Cucumber
 This is a project to showcase a test automation framework that I built using Cypress and Cucumber. 
 
@@ -38,6 +40,7 @@ This is a project to showcase a test automation framework that I built using Cyp
 - Environment Variables
 - Helper Functions
 - Cypress Commands
+- GitHub Actions CI
 
 
 
