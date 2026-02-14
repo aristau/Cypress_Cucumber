@@ -33,25 +33,6 @@ This project automates the **SauceDemo e-commerce site** ([https://www.saucedemo
 
 ---
 
-## ✅ Test Coverage
-
-**Authentication:** Valid/invalid login, locked out user, required field validation  
-**Inventory:** Products visibility, add/remove single & multiple products, sorting, cart persistence  
-**Cart:** Cart content, remove items, continue shopping, checkout navigation  
-**Checkout:** Required fields, overview validation, totals, taxes, checkout confirmation  
-
----
-
-## 📈 Continuous Integration
-
-**Automated Test Runs:** GitHub Actions executes all tests on every push or pull request.
-
-**Failure Artifacts:** Screenshots & videos uploaded **only on failures.**
-
-**CI Badge:** Provides clear visibility into test results
-
----
-
 ## 🚀 Running Tests Locally
 **Setup:**
 ```
@@ -88,6 +69,31 @@ npm run cy:run:login
 ```
 npm run cy:run:checkout
 ```
+
+---
+
+## ✅ Test Coverage
+
+**Authentication:** Valid/invalid login, locked out user, required field validation
+![Authentication Test Run](docs/gifs/LoginTests.gif)
+**Inventory:** Products visibility, add/remove single & multiple products, sorting, cart persistence  
+![Inventory Test Run](docs/gifs/InventoryTests.gif)
+**Cart:** Cart content, remove items, continue shopping, checkout navigation
+![Cart Test Run](docs/gifs/CartTests.gif)
+**Checkout:** Required fields, overview validation, totals, taxes, checkout confirmation  
+![Checkout Test Run](docs/gifs/CheckoutTests.gif)
+
+---
+
+## 📈 Continuous Integration
+
+**Automated Test Runs:** GitHub Actions executes all tests on every push or pull request.
+
+**Failure Artifacts:** Screenshots & videos uploaded **only on failures.**
+
+**CI Badge:** Provides clear visibility into test results
+
+---
 
 
 
