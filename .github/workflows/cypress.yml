@@ -1,10 +1,13 @@
-name: Cypress Tests
+name: Cypress Tests + Publish Report
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+ 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   cypress-run:
@@ -13,6 +16,13 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: cypress_cucumber/package-lock.json
 
       - name: Clean old reports
         run: rm -rf cypress/cucumber-json cypress/cucumber-htmlreport
@@ -42,9 +52,12 @@ jobs:
         run: node generate-report.js
         working-directory: cypress_cucumber
 
-      - name: Upload HTML report artifact
-        if: always()
-        uses: actions/upload-artifact@v4
+      #  Upload report as GitHub Pages artifact
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: cucumber-html-report
           path: cypress_cucumber/cypress/cucumber-htmlreport
+
+      # Deploy report to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
