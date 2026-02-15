@@ -30,7 +30,8 @@ This project automates the **SauceDemo e-commerce site** ([https://www.saucedemo
 - Fixture-based test data
 - Cypress commands
 - Environment variables
-- CI/CD integration with GitHub Actions  
+- CI/CD integration with GitHub Actions / Pages
+- Test reporting with multiple-cucumber-html-reporter  
 
 ---
 
@@ -88,11 +89,15 @@ npm run cy:run:checkout
 
 ## 📈 Continuous Integration
 
-**Automated Test Runs:** GitHub Actions executes all tests on every push or pull request.
+**Automated Test Runs:** GitHub Actions executes all tests on every push, generates a report of test results, and publishes the report to GitHub Pages.
 
 **Failure Artifacts:** Screenshots & videos uploaded **only on failures.**
 
-**CI Badge:** Provides clear visibility into test results
+**Success Artifacts:** Test result report artifact uploaded **on every run.**
+
+**CI Badge (At top of Readme):** Provides clear visibility into test results.
+
+**Report Badge (At top of Readme):** Shows live report of test results on GitHub Pages.
 
 ---
 
