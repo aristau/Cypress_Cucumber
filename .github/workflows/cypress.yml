@@ -33,3 +33,14 @@ jobs:
         with:
           name: videos
           path: cypress_cucumber/cypress/videos
+
+      - name: Generate HTML report
+        run: node generate-report.js
+        working-directory: cypress_cucumber
+
+      - name: Upload HTML report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-html-report
+          path: cypress_cucumber/cypress/cucumber-htmlreport
