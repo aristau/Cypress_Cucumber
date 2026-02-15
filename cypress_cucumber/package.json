@@ -9,7 +9,8 @@
     "cy:run:login": "cypress run --spec 'cypress/e2e/features/authentication.feature'",
     "cy:run:checkout": "cypress run --spec 'cypress/e2e/features/checkout.feature'",
     "cy:run:cart": "cypress run --spec 'cypress/e2e/features/cart.feature'",
-    "cy:chrome": "cypress run --browser chrome"
+    "cy:chrome": "cypress run --browser chrome",
+    "generate:report": "node generate-report.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +18,8 @@
   "devDependencies": {
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.3",
     "cypress": "^13.14.2",
-    "esbuild": "^0.23.1"
+    "esbuild": "^0.23.1",
+    "multiple-cucumber-html-reporter": "^3.10.0"
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.1.2",
@@ -30,6 +32,10 @@
     "nonGlobalStepDefinitions": false,
     "stepDefinitions": [
       "cypress/e2e/step_definitions/**"
-    ]
+    ],
+    "json": {
+      "enabled": true,
+      "output": "cypress/cucumber-json/cucumber-report.json"
+    }
   }
 }
