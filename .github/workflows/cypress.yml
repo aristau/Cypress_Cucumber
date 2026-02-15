@@ -14,27 +14,31 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Clean old reports
+        run: rm -rf cypress/cucumber-json cypress/cucumber-htmlreport
+        working-directory: cypress_cucumber
+
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
           working-directory: cypress_cucumber
           browser: chrome
 
-      - name: Upload screenshots
+      - name: Upload screenshots on test failure
         uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: screenshots
           path: cypress_cucumber/cypress/screenshots
 
-      - name: Upload videos
+      - name: Upload videos on test failure
         uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: videos
           path: cypress_cucumber/cypress/videos
 
-      - name: Generate HTML report
+      - name: Generate HTML report of test results
         run: node generate-report.js
         working-directory: cypress_cucumber
 
