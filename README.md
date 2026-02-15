@@ -1,4 +1,5 @@
 [![Cypress Tests](https://github.com/aristau/Cypress_Cucumber/actions/workflows/cypress.yml/badge.svg)](https://github.com/aristau/Cypress_Cucumber/actions)
+[![Live Report](https://img.shields.io/badge/Live%20Report-View%20Report-blue)](https://aristau.github.io/Cypress_Cucumber/)
 
 # Cypress_Cucumber
 > Professional Cypress + Cucumber automation framework demonstrating BDD, Page Object Model, CI/CD, and maintainable automation practices.
