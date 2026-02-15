@@ -1,63 +1,68 @@
-name: Cypress Tests + Publish Report
+name: Cypress Tests and Publish Report
 
 on:
   push:
     branches: [ main ]
- 
+  workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
 
 jobs:
-  cypress-run:
+  test-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+
+      # 1. Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-          cache-dependency-path: cypress_cucumber/package-lock.json
 
-      - name: Clean old reports
-        run: rm -rf cypress/cucumber-json cypress/cucumber-htmlreport
-        working-directory: cypress_cucumber
-
+      # 2. Run Cypress tests using official Cypress GitHub Action
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
           working-directory: cypress_cucumber
           browser: chrome
+        continue-on-error: true
 
-      - name: Upload screenshots on test failure
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: screenshots
-          path: cypress_cucumber/cypress/screenshots
 
-      - name: Upload videos on test failure
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: videos
-          path: cypress_cucumber/cypress/videos
-
-      - name: Generate HTML report of test results
+      # 3. Generate HTML report of test results
+      - name: Generate HTML report
         run: node generate-report.js
         working-directory: cypress_cucumber
 
-      #  Upload report as GitHub Pages artifact
+
+      # 4. Prepare GitHub Pages content
+      - name: Prepare Pages content
+        run: |
+          mkdir pages
+
+          # Copy landing page
+          cp -r cypress_cucumber/gh-pages/* pages/
+
+          # Copy HTML report into /report
+          cp -r cypress_cucumber/cypress/cucumber-htmlreport pages/report
+
+
+      # 5. Upload GitHub Pages artifact
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: cypress_cucumber/cypress/cucumber-htmlreport
+          path: pages
 
-      # Deploy report to GitHub Pages
+
+      # 6. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
+
+      # 7. Upload report artifact for download
+      - name: Upload HTML report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-html-report
+          path: cypress_cucumber/cypress/cucumber-htmlreport
