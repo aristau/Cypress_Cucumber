@@ -1,0 +1,3 @@
+analytics/reports/*.json
+analytics/*.csv
+.DS_Store

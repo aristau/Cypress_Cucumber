@@ -19,6 +19,9 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.3",
     "cypress": "^13.14.2",
     "esbuild": "^0.23.1",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^4.4.1",
+    "mochawesome-report-generator": "^6.3.2",
     "multiple-cucumber-html-reporter": "^3.10.0"
   },
   "dependencies": {
