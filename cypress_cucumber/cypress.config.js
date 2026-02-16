@@ -38,7 +38,7 @@ module.exports = defineConfig({
   reporterOptions: {
     //Output reports to analytics folder at repo root
     reportDir: path.join(__dirname, "..", "analytics", "reports"),
-    overwrite: true,
+    overwrite: false,
     html: false,
     json: true
   }
