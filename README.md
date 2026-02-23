@@ -91,8 +91,6 @@ npm run cy:run:checkout
 
 **Automated Test Runs:** GitHub Actions executes all tests on every push, generates a report of test results, and publishes the report to GitHub Pages.
 
-**Failure Artifacts:** Screenshots & videos uploaded **only on failures.**
-
 **Success Artifacts:** Test result report artifact uploaded **on every run.**
 
 **CI Badge (At top of Readme):** Provides clear visibility into test results.
